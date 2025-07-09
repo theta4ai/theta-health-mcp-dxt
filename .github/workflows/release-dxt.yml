@@ -1,0 +1,45 @@
+name: Release DXT
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  build-and-upload:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install dxt CLI
+        run: npm install -g @anthropic-ai/dxt
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build .dxt file
+        run: dxt pack
+
+      - name: Upload .dxt as artifact (on push)
+        if: github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: theta-health-mcp
+          path: "*.dxt"
+
+      - name: Upload .dxt as release asset (on release)
+        if: github.event_name == 'release'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: "*.dxt"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 

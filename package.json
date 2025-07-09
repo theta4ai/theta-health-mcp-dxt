@@ -1,0 +1,19 @@
+{
+  "name": "theta-health-mcp",
+  "version": "1.0.0",
+  "description": "Theta Health MCP DXT Extension",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "build": "dxt pack"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "node-fetch": "^3.3.2",
+    "theta_health_mcp": "^1.6.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

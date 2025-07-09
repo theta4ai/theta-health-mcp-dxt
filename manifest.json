@@ -1,0 +1,42 @@
+{
+  "dxt_version": "0.1",
+  "name": "theta_health_mcp",
+  "version": "1.0.0",
+  "description": "Theta Health",
+  "long_description": "Theta Health",
+  "author": {
+    "name": "Theta Health",
+    "email": "developer@thetahealth.ai",
+    "url": "https://www.thetahealth.ai/"
+  },
+  "homepage": "https://www.thetahealth.ai/",
+  "documentation": "https://www.thetahealth.ai/",
+  "support": "https://www.thetahealth.ai/",
+  "server": {
+    "type": "node",
+    "entry_point": "server/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": [
+        "${__dirname}/server/index.js"
+      ],
+      "env": {
+        "THETA_HEALTH_MCP": "${user_config.theta_health_mcp}"
+      }
+    }
+  },
+  "user_config": {
+    "theta_health_mcp": {
+      "type": "string",
+      "title": "theta health mcp server",
+      "description": "theta health mcp server",
+      "required": false,
+      "sensitive": false,
+      "default": "https://mcp.thetahealth.ai/mcp"
+    }
+  },
+  "keywords": [
+    "health"
+  ],
+  "license": "MIT"
+}
