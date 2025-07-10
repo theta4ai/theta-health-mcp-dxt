@@ -11,7 +11,7 @@ One-click Theta Health MCP server installation for Claude Desktop
 
 ```sh
 pnpm install -g @anthropic-ai/dxt
-dxt pack
+dxt pack . theta-health.dxt
 ```
 
 ## mark

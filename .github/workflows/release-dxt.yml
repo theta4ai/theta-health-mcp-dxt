@@ -27,7 +27,7 @@ jobs:
         run: npm install
 
       - name: Build .dxt file
-        run: dxt pack
+        run: dxt pack . theta-health.dxt
 
       - name: Upload .dxt as artifact (on push)
         if: github.event_name == 'push'
