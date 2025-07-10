@@ -1,8 +1,8 @@
 {
   "dxt_version": "0.1",
-  "name": "theta_health_mcp",
-  "version": "1.0.0",
-  "description": "Theta Health",
+  "name": "Theta Health",
+  "version": "0.0.1",
+  "description": "The world's first HIPAA-compliant health data extension.",
   "long_description": "Theta Health",
   "author": {
     "name": "Theta Health",
