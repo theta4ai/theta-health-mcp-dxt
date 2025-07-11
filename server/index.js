@@ -6,7 +6,6 @@ import {
   CallToolRequestSchema,
   ListToolsRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
-import fetch from "node-fetch";
 import fs from "fs";
 import path from "path";
 import os from "os";
@@ -189,6 +188,7 @@ class TokenCache {
   }
 }
 
+// MCP代理类
 class HttpMcpProxy {
   constructor() {
     this.server = new Server(
@@ -762,6 +762,7 @@ class HttpMcpProxy {
     }
   }
 
+  // 运行MCP代理
   async run() {
     const transport = new StdioServerTransport();
     await this.server.connect(transport);
@@ -783,5 +784,6 @@ class HttpMcpProxy {
   }
 }
 
+// 创建并运行MCP代理
 const proxy = new HttpMcpProxy();
 proxy.run().catch(console.error);
