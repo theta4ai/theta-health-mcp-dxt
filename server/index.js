@@ -13,6 +13,7 @@ import https from "https";
 import http from "http";
 import { URL } from "url";
 import { exec } from "child_process";
+import open from "open";
 
 // 多环境Token缓存管理类
 class TokenCache {
@@ -392,29 +393,7 @@ class HttpMcpProxy {
           }
 
           try {
-            // 尝试打开浏览器
-            let command;
-            switch (os.platform()) {
-              case "darwin": // macOS
-                command = `open "${content.authorization_url}"`;
-                break;
-              case "win32": // Windows
-                command = `start "${content.authorization_url}"`;
-                break;
-              default: // Linux and others
-                command = `xdg-open "${content.authorization_url}"`;
-                break;
-            }
-
-            exec(command, (error) => {
-              if (error) {
-                console.error(`❌ 自动打开浏览器失败: ${error.message}`);
-                console.error(`📋 请手动复制以下链接到浏览器:`);
-                console.error(`   ${content.authorization_url}`);
-              } else {
-                console.error(`✅ 浏览器已自动打开，请在浏览器中完成认证`);
-              }
-            });
+            await open(content.authorization_url);
           } catch (error) {
             console.error(`❌ 打开浏览器失败: ${error.message}`);
             console.error(`📋 请手动复制以下链接到浏览器:`);
