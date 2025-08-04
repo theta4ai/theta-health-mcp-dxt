@@ -1,6 +1,6 @@
 {
-  "name": "theta-health-mcp",
-  "version": "1.0.0",
+  "name": "theta-health-mcp-dxt",
+  "version": "0.0.4",
   "description": "Theta Health MCP DXT Extension",
   "main": "server.js",
   "type": "module",
